@@ -17,6 +17,7 @@ void dispmenu() {
     cout<<"        11.测链表是否为空      "<<endl;
     cout<<"        12.遍历输出           "<<endl;
     cout<<"        13.按值查找前驱        "<<endl;
+    cout<<"        14.单链表逆置         "<<endl;
     cout<<"        0.退出                "<<endl;
     cout<<endl;
     cout<<"-----------------------------"<<endl;
@@ -160,6 +161,16 @@ void Choice() {
                 break;
             }
             cout<<"没有前驱元素！"<<endl;
+            break;
+        case 14:
+            cout<<"正在执行单链表逆置操作...."<<endl;
+            if(ReverseList(list)) {
+                cout<<"逆置成功！"<<endl;
+                cout<<"逆置后链表：";
+                ListDisp(list);
+                break;
+            }
+            cerr<<"逆置失败！"<<endl;
             break;
         case 0:
             cout<<"正在退出...."<<endl;
