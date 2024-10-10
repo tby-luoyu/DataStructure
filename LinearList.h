@@ -8,11 +8,11 @@ struct SqList {
 };
 //初始化顺序表
 template<class  DT>
-bool initSqList(SqList<DT> &List,int size) {
+bool InitSqList(SqList<DT> &List,int size) {
     //申请动态内存数组
     List.addr = new DT[size];
     if (List.addr == NULL) { //申请失败，抛出异常
-        cerr<< "Memory allocation failed! failed to initialize SqList."<<endl;
+        cerr<< "Memory allocation failed! failed to initialize SqList.申请内存失败"<<endl;
     }
     //初始化顺序表信息
     List.length = 0;
@@ -25,7 +25,7 @@ template<class DT>
 bool CreateSqList(SqList<DT> &list, int n) {
     //判断创建顺序表是否有合适的内存空间
     if (n>list.size) {
-        cerr<< "The length of the list is less than the number of elements to be inserted."<<endl;
+        cerr<< "The length of the list is less than the number of elements to be inserted. 申请内存失败"<<endl;
     }
     //向顺序表内存入元素
     for (int i = 0; i < n; i++) {
@@ -65,7 +65,7 @@ int LocateElem_e(SqList<DT> list,DT e) {
             return i;
         }
     }
-    return 0;
+    return -1;
 }
 
 //按位序插入元素
@@ -121,6 +121,14 @@ template<class DT>
 void ClearList(SqList<DT> &List) {
     List.length = 0;
 }
+//测表空
+template<class DT>
+bool ListEmpty(SqList<DT> List) {
+    if(List.length == 0) {
+        return true;
+    }
+    return false;
+}
 //测表长
 template<class DT>
 int ListLength(SqList<DT> List) {
@@ -141,4 +149,15 @@ void ListDisp(SqList<DT> List) {
         cout<<List.addr[i]<<" ";
     }
     cout<<endl;
+}
+//按值查找前驱
+template<class DT>
+bool PriorElem_e(SqList<DT> List,DT cur_e,DT &pre_e) {
+    int i = LocateElem_e(List,cur_e);
+    if(i==0) {
+        cout<<"元素不存在或者没有前驱"<<endl;
+        return false;
+    }
+    pre_e = List.addr[i-1];
+    return true;
 }
