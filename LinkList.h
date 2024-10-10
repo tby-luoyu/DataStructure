@@ -16,9 +16,9 @@ bool InitLinkList(LNode<DT> *&List) {
     List->next = NULL;
     return true;
 }
-//创建链表
+//创建链表(尾插法)
 template<class DT>
-bool CreateLinkList(LNode<DT> *&List, int n ) {
+bool CreateLinkList_Tail(LNode<DT> *&List, int n ) {
     //设置尾指针指向头节点
     LNode<DT> *p = List;
     for(int i=0; i<n; i++) {
@@ -34,6 +34,26 @@ bool CreateLinkList(LNode<DT> *&List, int n ) {
     }
     return true;
 }
+//创建链表(头插法)
+template<class DT>
+bool CreateLinkList_Head(LNode<DT> *&List, int n ) {
+    //设置尾指针指向头节点
+    LNode<DT> *p = List;
+    for(int i=0; i<n; i++) {
+        //申请内存
+        LNode<DT> *q = new LNode<DT>;
+        //判断内存是否申请成功
+        if(!q){cerr<<"Memory allocation failed! failed to create LinkList.创建链表失败内存不足"<<endl; return false;}
+        //输入数据
+        cin>>q->data;
+        p->next = q;
+        p = q;
+        p->next = NULL;
+    }
+    return true;
+}
+
+
 //销毁链表
 template<class DT>
 bool DestoryList(LNode<DT> *&List) {
@@ -108,6 +128,7 @@ bool InsertElem_i(LNode<DT> *&List, int i, DT e) {
 template<class DT>
 bool DeleteElem_i(LNode<DT> *&List, int i) {
     LNode<DT> *p =List; //设置尾指针指向头节点
+
     if(i<0) {
         cerr<<"Error: invalid index."<<endl;
         return false;
@@ -190,4 +211,21 @@ void ListDisp(LNode<DT> *List) {
         p = p->next;
         }
     cout<<endl; //换行
+}
+
+//链表反转
+template<class DT>
+bool ReverseList(LNode<DT> *&List) {
+    //设置尾指针指向头节点
+    LNode<DT> *p = List->next;
+    LNode<DT> *q = NULL;
+    LNode<DT> *r = NULL;
+    while(p) {
+        q = p->next;
+        p->next = r;
+        r = p;
+        p = q;
+    }
+    List->next = r;
+    return true;
 }

@@ -7,7 +7,7 @@ int main(int argc, char *argv[]) {
     //LinearList Test
 
     /*
-     *int a=3;
+    int a=3;
     SqList<int> LIST;
     initSqList(LIST,15);
     CreateSqList(LIST,5);
@@ -21,6 +21,7 @@ int main(int argc, char *argv[]) {
 
     //LinkList Test
 
+    /*
     int a;
     LNode<int> *List;
     InitLinkList(List);
@@ -34,6 +35,13 @@ int main(int argc, char *argv[]) {
     ListDisp(List);
     cout<<"Length of List: "<<endl;
     DestoryList(List);
+    */
+    // int a;
+    // LNode<int> *List;
+    // InitLinkList(List);
+    // CreateLinkList_Head(List,5);
+    // InsertElem_i(List,3,10  );
+    // ListDisp(List);
 
 
 
