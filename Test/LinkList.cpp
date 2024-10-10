@@ -24,6 +24,7 @@ void dispmenu() {
 void Choice() {
     int choice;
     cout<<"请输入操作编号：";
+    cin.sync();
     cin>>choice;
     system("CLS");
     dispmenu();
@@ -160,14 +161,12 @@ void Choice() {
             }
             cout<<"没有前驱元素！"<<endl;
             break;
-        case 14:
-            dispmenu();
-            break;
         case 0:
             cout<<"正在退出...."<<endl;
             exit(0);
         default:
             cout<<"输入错误！"<<endl;
+            break;
     }
 }
 int main() {
