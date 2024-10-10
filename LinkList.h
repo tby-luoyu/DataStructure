@@ -105,7 +105,7 @@ int LocateElem_e(LNode<DT> *List, DT e) {
         p = p->next;
         j++;
     }
-    return 0; //未找到元素
+    return -1; //未找到元素
 }
 //按位序插入新元素
 template<class DT>
@@ -211,6 +211,20 @@ void ListDisp(LNode<DT> *List) {
         p = p->next;
         }
     cout<<endl; //换行
+}
+//按值查找前驱
+template<class DT>
+bool LocatePrev_e(LNode<DT> *List, DT e,DT &V) {
+    int index;
+    //获取查询值的位序
+    index = LocateElem_e(List, e);
+    //判断是否找到元素
+    if(index>0) {
+        GetElem_i(List, index-1, V);
+        return true;
+    }
+    cerr << "找不到元素！" << endl;
+    return false;
 }
 
 //链表反转
