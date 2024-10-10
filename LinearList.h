@@ -6,58 +6,59 @@ struct SqList {
     int length; //Data Length
     int size; //Data Size
 };
-//åˆå§‹åŒ–é¡ºåºè¡¨
+//³õÊ¼»¯Ë³Ğò±í
 template<class  DT>
 bool InitSqList(SqList<DT> &List,int size) {
-    //ç”³è¯·åŠ¨æ€å†…å­˜æ•°ç»„
+    //ÉêÇë¶¯Ì¬ÄÚ´æÊı×é
     List.addr = new DT[size];
-    if (List.addr == NULL) { //ç”³è¯·å¤±è´¥ï¼ŒæŠ›å‡ºå¼‚å¸¸
-        cerr<< "Memory allocation failed! failed to initialize SqList.ç”³è¯·å†…å­˜å¤±è´¥"<<endl;
+    if (List.addr == NULL) { //ÉêÇëÊ§°Ü£¬Å×³öÒì³£
+        cerr<< "Memory allocation failed! failed to initialize SqList.ÉêÇëÄÚ´æÊ§°Ü"<<endl;
     }
-    //åˆå§‹åŒ–é¡ºåºè¡¨ä¿¡æ¯
+    //³õÊ¼»¯Ë³Ğò±íĞÅÏ¢
     List.length = 0;
     List.size = size;
     return true;
 }
 
-//åˆ›å»ºé¡ºåºè¡¨
+//´´½¨Ë³Ğò±í
 template<class DT>
 bool CreateSqList(SqList<DT> &list, int n) {
-    //åˆ¤æ–­åˆ›å»ºé¡ºåºè¡¨æ˜¯å¦æœ‰åˆé€‚çš„å†…å­˜ç©ºé—´
+    //ÅĞ¶Ï´´½¨Ë³Ğò±íÊÇ·ñÓĞºÏÊÊµÄÄÚ´æ¿Õ¼ä
     if (n>list.size) {
-        cerr<< "The length of the list is less than the number of elements to be inserted. ç”³è¯·å†…å­˜å¤±è´¥"<<endl;
+        cerr<< "The length of the list is less than the number of elements to be inserted. ÉêÇëÄÚ´æÊ§°Ü"<<endl;
+        return false;
     }
-    //å‘é¡ºåºè¡¨å†…å­˜å…¥å…ƒç´ 
+    //ÏòË³Ğò±íÄÚ´æÈëÔªËØ
     for (int i = 0; i < n; i++) {
          cin>>list.addr[i];
     }
-    //æ›´æ–°é¡ºåºè¡¨é•¿åº¦
+    //¸üĞÂË³Ğò±í³¤¶È
     list.length = n;
     return true;
 }
 
-//é”€æ¯é¡ºåºè¡¨
+//Ïú»ÙË³Ğò±í
 template<class DT>
 void DestorySqList(SqList<DT> &list) {
-    //é‡Šæ”¾åŠ¨æ€æ•°ç»„å†…å­˜
+    //ÊÍ·Å¶¯Ì¬Êı×éÄÚ´æ
     delete[] list.addr;
-    //é‡ç½®é¡ºåºè¡¨ä¿¡æ¯
+    //ÖØÖÃË³Ğò±íĞÅÏ¢
     list.size =0;
     list.length =0;
 }
-//æŒ‰ä½åºæŸ¥æ‰¾
+//°´Î»Ğò²éÕÒ
 template<class DT>
 bool GetElem_i(SqList<DT> list,int i, DT &e) {
-    //åˆ¤æ–­ä½åºæ˜¯å¦åˆæ³•
+    //ÅĞ¶ÏÎ»ĞòÊÇ·ñºÏ·¨
     if(i<=0 || i>list.length) {
-        cerr<<"æŸ¥è¯¢èŒƒå›´è¶Šç•Œ."<<endl;
+        cerr<<"²éÑ¯·¶Î§Ô½½ç."<<endl;
     }else {
             e = list.addr[i-1];
             return true;
     }
     return false;
 }
-//æŒ‰å€¼æŸ¥æ‰¾
+//°´Öµ²éÕÒ
 template<class DT>
 int LocateElem_e(SqList<DT> list,DT e) {
     for (int i = 0; i < list.length; i++) {
@@ -68,18 +69,18 @@ int LocateElem_e(SqList<DT> list,DT e) {
     return -1;
 }
 
-//æŒ‰ä½åºæ’å…¥å…ƒç´ 
+//°´Î»Ğò²åÈëÔªËØ
 template<class DT>
 bool InsertElem_i(SqList<DT> &List,int i,DT e) {
     if(List.length == List.size) {
-        cout<<"é¡ºåºè¡¨å·²æ»¡"<<endl;
+        cout<<"Ë³Ğò±íÒÑÂú"<<endl;
         return false;
     }
     if(i<0 || i>List.length+1) {
-        cout<<"æ’å…¥ä½ç½®ä¸åˆæ³•"<<endl;
+        cout<<"²åÈëÎ»ÖÃ²»ºÏ·¨"<<endl;
         return false;
     }
-    //å°†iåé¢çš„å…ƒç´ åç§»ä¸€ä½
+    //½«iºóÃæµÄÔªËØºóÒÆÒ»Î»
     for(int j=List.length-1;j>i-1;j--) {
         List.addr[j+1]=List.addr[j];
     }
@@ -87,15 +88,15 @@ bool InsertElem_i(SqList<DT> &List,int i,DT e) {
     List.length++;
     return true;
 }
-//æŒ‰ä½åºåˆ é™¤å…ƒç´ 
+//°´Î»ĞòÉ¾³ıÔªËØ
 template<class DT>
 bool DeleteElem_i(SqList<DT> &List,int i) {
     if(List.length == 0) {
-        cout<<"é¡ºåºè¡¨ä¸ºç©º"<<endl;
+        cout<<"Ë³Ğò±íÎª¿Õ"<<endl;
         return false;
     }
     if(i<1 || i>List.length) {
-        cout<<"åˆ é™¤ä½ç½®ä¸åˆæ³•"<<endl;
+        cout<<"É¾³ıÎ»ÖÃ²»ºÏ·¨"<<endl;
         return false;
     }
     for(;i<List.length-1;i++) {
@@ -105,23 +106,23 @@ bool DeleteElem_i(SqList<DT> &List,int i) {
     return true;
 }
 
-//æŒ‰ä½åºä¿®æ”¹å…ƒç´ å€¼
+//°´Î»ĞòĞŞ¸ÄÔªËØÖµ
 template<class DT>
 bool PutElem_i(SqList<DT> &List,int i,DT e) {
     if(i<1 || i>List.length) {
-        cout<<"å…ƒç´ ä¸å­˜åœ¨"<<endl;
+        cout<<"ÔªËØ²»´æÔÚ"<<endl;
         return false;
     }
     List.addr[i] =e;
     return true;
 
 }
-//æ¸…ç©ºé¡ºåºè¡¨
+//Çå¿ÕË³Ğò±í
 template<class DT>
 void ClearList(SqList<DT> &List) {
     List.length = 0;
 }
-//æµ‹è¡¨ç©º
+//²â±í¿Õ
 template<class DT>
 bool ListEmpty(SqList<DT> List) {
     if(List.length == 0) {
@@ -129,12 +130,12 @@ bool ListEmpty(SqList<DT> List) {
     }
     return false;
 }
-//æµ‹è¡¨é•¿
+//²â±í³¤
 template<class DT>
 int ListLength(SqList<DT> List) {
     return List.length;
 }
-//æµ‹è¡¨æ»¡
+//²â±íÂú
 template<class DT>
 bool ListFull(SqList<DT> List) {
     if(List.length == List.size) {
@@ -142,7 +143,7 @@ bool ListFull(SqList<DT> List) {
     }
     return false;
 }
-//éå†è¾“å‡ºé¡ºåºè¡¨
+//±éÀúÊä³öË³Ğò±í
 template<class DT>
 void ListDisp(SqList<DT> List) {
     for(int i=0;i<List.length;i++) {
@@ -150,12 +151,12 @@ void ListDisp(SqList<DT> List) {
     }
     cout<<endl;
 }
-//æŒ‰å€¼æŸ¥æ‰¾å‰é©±
+//°´Öµ²éÕÒÇ°Çı
 template<class DT>
 bool PriorElem_e(SqList<DT> List,DT cur_e,DT &pre_e) {
     int i = LocateElem_e(List,cur_e);
     if(i==0) {
-        cout<<"å…ƒç´ ä¸å­˜åœ¨æˆ–è€…æ²¡æœ‰å‰é©±"<<endl;
+        cout<<"ÔªËØ²»´æÔÚ»òÕßÃ»ÓĞÇ°Çı"<<endl;
         return false;
     }
     pre_e = List.addr[i-1];

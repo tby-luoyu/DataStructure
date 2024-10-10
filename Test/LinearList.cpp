@@ -1,5 +1,7 @@
 #include "../LinearList.h"
 
+using namespace std;
+
 void dispmenu() {
     cout<<"---------单链表操作菜单---------"<<endl;
     cout<<endl;
@@ -170,4 +172,13 @@ void Choice(){
         break;
     }
 
+}
+int main(int argc, char const *argv[])
+{
+    dispmenu();
+    while (1)
+    {
+        Choice();
+    }
+    return 0;
 }

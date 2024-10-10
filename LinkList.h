@@ -1,32 +1,32 @@
 #include <iostream>
 using namespace std;
-//é“¾è¡¨ç»“æ„
+//Á´±í½á¹¹
 template<class DT>
 struct LNode {
-    DT data; //å­˜å‚¨æ•°æ®
-    LNode<DT> *next; //æŒ‡å‘ä¸‹ä¸€ä¸ªèŠ‚ç‚¹çš„æŒ‡é’ˆ
+    DT data; //´æ´¢Êı¾İ
+    LNode<DT> *next; //Ö¸ÏòÏÂÒ»¸ö½ÚµãµÄÖ¸Õë
 };
-//åˆå§‹åŒ–é“¾è¡¨
+//³õÊ¼»¯Á´±í
 template<class DT>
 bool InitLinkList(LNode<DT> *&List) {
-    //ç”³è¯·å¤´ç»“ç‚¹å†…å­˜
+    //ÉêÇëÍ·½áµãÄÚ´æ
     List = new LNode<DT>;
-    //åˆ¤æ–­å†…å­˜æ˜¯å¦ç”³è¯·æˆåŠŸ
+    //ÅĞ¶ÏÄÚ´æÊÇ·ñÉêÇë³É¹¦
     if(!List){cerr<<"Memory allocation failed! failed to initialize LinkList."<<endl;}
     List->next = NULL;
     return true;
 }
-//åˆ›å»ºé“¾è¡¨(å°¾æ’æ³•)
+//´´½¨Á´±í(Î²²å·¨)
 template<class DT>
 bool CreateLinkList_Tail(LNode<DT> *&List, int n ) {
-    //è®¾ç½®å°¾æŒ‡é’ˆæŒ‡å‘å¤´èŠ‚ç‚¹
+    //ÉèÖÃÎ²Ö¸ÕëÖ¸ÏòÍ·½Úµã
     LNode<DT> *p = List;
     for(int i=0; i<n; i++) {
-        //ç”³è¯·å†…å­˜
+        //ÉêÇëÄÚ´æ
         LNode<DT> *q = new LNode<DT>;
-        //åˆ¤æ–­å†…å­˜æ˜¯å¦ç”³è¯·æˆåŠŸ
-        if(!q){cerr<<"Memory allocation failed! failed to create LinkList.åˆ›å»ºé“¾è¡¨å¤±è´¥å†…å­˜ä¸è¶³"<<endl; return false;}
-        //è¾“å…¥æ•°æ®
+        //ÅĞ¶ÏÄÚ´æÊÇ·ñÉêÇë³É¹¦
+        if(!q){cerr<<"Memory allocation failed! failed to create LinkList.´´½¨Á´±íÊ§°ÜÄÚ´æ²»×ã"<<endl; return false;}
+        //ÊäÈëÊı¾İ
         cin>>q->data;
         p->next = q;
         q->next = NULL;
@@ -34,17 +34,17 @@ bool CreateLinkList_Tail(LNode<DT> *&List, int n ) {
     }
     return true;
 }
-//åˆ›å»ºé“¾è¡¨(å¤´æ’æ³•)
+//´´½¨Á´±í(Í·²å·¨)
 template<class DT>
 bool CreateLinkList_Head(LNode<DT> *&List, int n ) {
-    //è®¾ç½®å°¾æŒ‡é’ˆæŒ‡å‘å¤´èŠ‚ç‚¹
+    //ÉèÖÃÎ²Ö¸ÕëÖ¸ÏòÍ·½Úµã
     LNode<DT> *p = List;
     for(int i=0; i<n; i++) {
-        //ç”³è¯·å†…å­˜
+        //ÉêÇëÄÚ´æ
         LNode<DT> *q = new LNode<DT>;
-        //åˆ¤æ–­å†…å­˜æ˜¯å¦ç”³è¯·æˆåŠŸ
-        if(!q){cerr<<"Memory allocation failed! failed to create LinkList.åˆ›å»ºé“¾è¡¨å¤±è´¥å†…å­˜ä¸è¶³"<<endl; return false;}
-        //è¾“å…¥æ•°æ®
+        //ÅĞ¶ÏÄÚ´æÊÇ·ñÉêÇë³É¹¦
+        if(!q){cerr<<"Memory allocation failed! failed to create LinkList.´´½¨Á´±íÊ§°ÜÄÚ´æ²»×ã"<<endl; return false;}
+        //ÊäÈëÊı¾İ
         cin>>q->data;
         p->next = q;
         p = q;
@@ -54,26 +54,26 @@ bool CreateLinkList_Head(LNode<DT> *&List, int n ) {
 }
 
 
-//é”€æ¯é“¾è¡¨
+//Ïú»ÙÁ´±í
 template<class DT>
 bool DestoryList(LNode<DT> *&List) {
-    //è®¾ç½®å°¾æŒ‡é’ˆæŒ‡å‘å¤´èŠ‚ç‚¹
+    //ÉèÖÃÎ²Ö¸ÕëÖ¸ÏòÍ·½Úµã
     LNode<DT> *P = List;
     while(P) {
-        //è®¾ç½®ListæŒ‡é’ˆæŒ‡å‘ä¸‹ä¸€ä¸ªèŠ‚ç‚¹
+        //ÉèÖÃListÖ¸ÕëÖ¸ÏòÏÂÒ»¸ö½Úµã
         List = List->next;
-        //é‡Šæ”¾å½“å‰èŠ‚ç‚¹å†…å­˜
+        //ÊÍ·Åµ±Ç°½ÚµãÄÚ´æ
         delete P;
-        //PæŒ‡å‘List
+        //PÖ¸ÏòList
         P=List;
     }
     List = NULL;
     return true;
 }
-//æŒ‰ä½åºæŸ¥æ‰¾
+//°´Î»Ğò²éÕÒ
 template<class DT>
 bool GetElem_i(LNode<DT> *List, int i, DT &e) {
-    //è®¾ç½®å°¾æŒ‡é’ˆæŒ‡å‘å¤´èŠ‚ç‚¹
+    //ÉèÖÃÎ²Ö¸ÕëÖ¸ÏòÍ·½Úµã
     LNode<DT> *p = List->next;
     if (i < 0) {
         cerr << "Error: invalid index." << endl;
@@ -93,24 +93,24 @@ bool GetElem_i(LNode<DT> *List, int i, DT &e) {
     cerr << "Error: failed to find element." << endl;
     return false;
 }
-//æŒ‰å€¼æŸ¥æ‰¾
+//°´Öµ²éÕÒ
 template<class DT>
 int LocateElem_e(LNode<DT> *List, DT e) {
-    LNode<DT> *p = List->next;//è®¾ç½®å°¾æŒ‡é’ˆæŒ‡å‘å¤´èŠ‚ç‚¹
-    int j = 0; //è®¾ç½®è®¡æ•°å™¨
+    LNode<DT> *p = List->next;//ÉèÖÃÎ²Ö¸ÕëÖ¸ÏòÍ·½Úµã
+    int j = 0; //ÉèÖÃ¼ÆÊıÆ÷
     while(p) {
         if(p->data == e) {
-            return j; //æ‰¾åˆ°å…ƒç´ ï¼Œè¿”å›ä½ç½®
+            return j; //ÕÒµ½ÔªËØ£¬·µ»ØÎ»ÖÃ
         }
         p = p->next;
         j++;
     }
-    return -1; //æœªæ‰¾åˆ°å…ƒç´ 
+    return -1; //Î´ÕÒµ½ÔªËØ
 }
-//æŒ‰ä½åºæ’å…¥æ–°å…ƒç´ 
+//°´Î»Ğò²åÈëĞÂÔªËØ
 template<class DT>
 bool InsertElem_i(LNode<DT> *&List, int i, DT e) {
-    LNode<DT> *P = List->next; //è®¾ç½®å°¾æŒ‡é’ˆæŒ‡å‘å¤´èŠ‚ç‚¹
+    LNode<DT> *P = List->next; //ÉèÖÃÎ²Ö¸ÕëÖ¸ÏòÍ·½Úµã
     for(int j=0; j<i-1; j++) {
         if(!P) {
             cerr<<"Error: failed to insert element."<<endl;
@@ -118,16 +118,16 @@ bool InsertElem_i(LNode<DT> *&List, int i, DT e) {
         }
         P = P->next;
     }
-    LNode<DT> *s = new LNode<DT>; //è®¾ç½®å°¾æŒ‡é’ˆæŒ‡å‘å¤´èŠ‚ç‚¹
+    LNode<DT> *s = new LNode<DT>; //ÉèÖÃÎ²Ö¸ÕëÖ¸ÏòÍ·½Úµã
     s->data = e;
     s->next = P->next;
     P->next = s;
     return true;
 }
-//æŒ‰ä½åºåˆ é™¤å…ƒç´ 
+//°´Î»ĞòÉ¾³ıÔªËØ
 template<class DT>
 bool DeleteElem_i(LNode<DT> *&List, int i) {
-    LNode<DT> *p =List; //è®¾ç½®å°¾æŒ‡é’ˆæŒ‡å‘å¤´èŠ‚ç‚¹
+    LNode<DT> *p =List; //ÉèÖÃÎ²Ö¸ÕëÖ¸ÏòÍ·½Úµã
 
     if(i<0) {
         cerr<<"Error: invalid index."<<endl;
@@ -145,10 +145,10 @@ bool DeleteElem_i(LNode<DT> *&List, int i) {
     delete q;
     return true;
 }
-//æŒ‰ä½åºä¿®æ”¹å…ƒç´ å€¼
+//°´Î»ĞòĞŞ¸ÄÔªËØÖµ
 template<class DT>
 bool PutElem_i(LNode<DT> *&List,int i,DT e) {
-    LNode<DT> *p = List; //è®¾ç½®å°¾æŒ‡é’ˆæŒ‡å‘å¤´èŠ‚ç‚¹
+    LNode<DT> *p = List; //ÉèÖÃÎ²Ö¸ÕëÖ¸ÏòÍ·½Úµã
     if(i<0) {
         cerr<<"Error: invalid index."<<endl;
         return false;
@@ -164,10 +164,10 @@ bool PutElem_i(LNode<DT> *&List,int i,DT e) {
     p->data = e;
     return true;
 }
-//æ¸…ç©ºå•é“¾è¡¨
+//Çå¿Õµ¥Á´±í
 template<class DT>
 bool ClearList(LNode<DT> *&List) {
-    //è®¾ç½®å°¾æŒ‡é’ˆæŒ‡å‘å¤´èŠ‚ç‚¹
+    //ÉèÖÃÎ²Ö¸ÕëÖ¸ÏòÍ·½Úµã
     LNode<DT> *p = List->next;
     LNode<DT> *q = NULL;
     while(!p) {
@@ -178,10 +178,10 @@ bool ClearList(LNode<DT> *&List) {
     List->next = NULL;
     return true;
 }
-//æµ‹è¡¨é•¿
+//²â±í³¤
 template<class DT>
 int ListLength(LNode<DT> *List) {
-    //è®¾ç½®å°¾æŒ‡é’ˆæŒ‡å‘å¤´èŠ‚ç‚¹
+    //ÉèÖÃÎ²Ö¸ÕëÖ¸ÏòÍ·½Úµã
     LNode<DT> *p = List->next;
     int j = 0;
     while(p) {
@@ -190,10 +190,10 @@ int ListLength(LNode<DT> *List) {
     }
     return j;
 }
-//åˆ¤æ–­é“¾è¡¨æ˜¯å¦ä¸ºç©º
+//ÅĞ¶ÏÁ´±íÊÇ·ñÎª¿Õ
 template<class DT>
 bool IsEmpty(LNode<DT> *List) {
-    //è®¾ç½®å°¾æŒ‡é’ˆæŒ‡å‘å¤´èŠ‚ç‚¹
+    //ÉèÖÃÎ²Ö¸ÕëÖ¸ÏòÍ·½Úµã
     LNode<DT> *p = List->next;
     if(p) {
         return false;
@@ -201,36 +201,36 @@ bool IsEmpty(LNode<DT> *List) {
     return true;
 }
 
-//éå†é“¾è¡¨
+//±éÀúÁ´±í
 template<class DT>
 void ListDisp(LNode<DT> *List) {
-    //è®¾ç½®å°¾æŒ‡é’ˆæŒ‡å‘å¤´èŠ‚ç‚¹
+    //ÉèÖÃÎ²Ö¸ÕëÖ¸ÏòÍ·½Úµã
     LNode<DT> *p = List->next;
     while(p) {
         cout<<p->data<<" ";
         p = p->next;
         }
-    cout<<endl; //æ¢è¡Œ
+    cout<<endl; //»»ĞĞ
 }
-//æŒ‰å€¼æŸ¥æ‰¾å‰é©±
+//°´Öµ²éÕÒÇ°Çı
 template<class DT>
 bool LocatePrev_e(LNode<DT> *List, DT e,DT &V) {
     int index;
-    //è·å–æŸ¥è¯¢å€¼çš„ä½åº
+    //»ñÈ¡²éÑ¯ÖµµÄÎ»Ğò
     index = LocateElem_e(List, e);
-    //åˆ¤æ–­æ˜¯å¦æ‰¾åˆ°å…ƒç´ 
+    //ÅĞ¶ÏÊÇ·ñÕÒµ½ÔªËØ
     if(index>0) {
         GetElem_i(List, index-1, V);
         return true;
     }
-    cerr << "æ‰¾ä¸åˆ°å…ƒç´ ï¼" << endl;
+    cerr << "ÕÒ²»µ½ÔªËØ£¡" << endl;
     return false;
 }
 
-//é“¾è¡¨åè½¬
+//Á´±í·´×ª
 template<class DT>
 bool ReverseList(LNode<DT> *&List) {
-    //è®¾ç½®å°¾æŒ‡é’ˆæŒ‡å‘å¤´èŠ‚ç‚¹
+    //ÉèÖÃÎ²Ö¸ÕëÖ¸ÏòÍ·½Úµã
     LNode<DT> *p = List->next;
     LNode<DT> *q = NULL;
     LNode<DT> *r = NULL;
