@@ -52,11 +52,10 @@ bool GetElem_i(SqList<DT> list,int i, DT &e) {
     if(i<=0 || i>list.length) {
         cerr<<"查询范围越界."<<endl;
     }else {
-        if(list.addr[i-1] == e) {
+            e = list.addr[i-1];
             return true;
-        }
-        return false;
     }
+    return false;
 }
 //按值查找
 template<class DT>
