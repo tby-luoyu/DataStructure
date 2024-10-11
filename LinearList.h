@@ -95,7 +95,7 @@ bool DeleteElem_i(SqList<DT> &List,int i) {
         cout<<"顺序表为空"<<endl;
         return false;
     }
-    if(i<1 || i>List.length) {
+    if(i<0 || i>List.length) {
         cout<<"删除位置不合法"<<endl;
         return false;
     }
@@ -109,7 +109,7 @@ bool DeleteElem_i(SqList<DT> &List,int i) {
 //按位序修改元素值
 template<class DT>
 bool PutElem_i(SqList<DT> &List,int i,DT e) {
-    if(i<1 || i>List.length) {
+    if(i<0 || i>List.length) {
         cout<<"元素不存在"<<endl;
         return false;
     }
@@ -155,7 +155,7 @@ void ListDisp(SqList<DT> List) {
 template<class DT>
 bool PriorElem_e(SqList<DT> List,DT cur_e,DT &pre_e) {
     int i = LocateElem_e(List,cur_e);
-    if(i==0) {
+    if(i==0||i==-1) {
         cout<<"元素不存在或者没有前驱"<<endl;
         return false;
     }
