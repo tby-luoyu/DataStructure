@@ -29,6 +29,7 @@ bool CreateSqList(SqList<DT> &list, int n) {
         return false;
     }
     //向顺序表内存入元素
+    cout<<"请输入顺序表元素：";
     for (int i = 0; i < n; i++) {
          cin>>list.addr[i];
     }
@@ -151,6 +152,58 @@ void ListDisp(SqList<DT> List) {
     }
     cout<<endl;
 }
+template<class DT>
+void Union(SqList<DT> &A, SqList<DT> &B) {
+    int n1 = A.size + B.size;
+    if (A.size == 0 || B.size == 0) {
+        cout << "顺序表不存在或未申请空间" << endl;
+        return;
+    }
+
+    SqList<DT> newlist;
+    InitSqList(newlist,n1);
+    if (!newlist.addr) {
+        cerr << "新顺序表初始化失败！" << endl;
+        return;
+    }
+    for (int i = 0; i < A.size; i++) {
+        InsertElem_i(newlist, i, A.addr[i]);
+    }
+    for (int i = 0; i < B.size; i++) {
+        InsertElem_i(newlist, A.size + i, B.addr[i]);
+    }
+    A = newlist;
+}
+
+template<class DT>
+void Reverse(SqList<DT> &List) {
+    if (List.size == 0) {
+        cout << "顺序表不存在或未申请空间" << endl;
+        return;
+    }
+
+    for (int i = 0; i < List.size / 2; i++) {
+        swap(List.addr[i], List.addr[List.size - i - 1]);
+    }
+}
+
+template<class DT>
+void PolyAdd(const SqList<DT> &la, const SqList<DT> &lb, SqList<DT> &lc) {
+    int n1=max(la.size, lb.size);
+    InitSqList(lc,n1);
+    if (!lc.addr) {
+        cerr << "结果顺序表初始化失败！" << endl;
+        return;
+    }
+
+    int maxSize = max(la.size, lb.size);
+    for (int i = 0; i < maxSize; i++) {
+        DT valueA = (i < la.size) ? la.addr[i] : 0;
+        DT valueB = (i < lb.size) ? lb.addr[i] : 0;
+        InsertElem_i(lc, i, valueA + valueB);
+    }
+}
+
 //按值查找前驱
 template<class DT>
 bool PriorElem_e(SqList<DT> List,DT cur_e,DT &pre_e) {

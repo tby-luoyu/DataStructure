@@ -22,7 +22,7 @@ void dispmenu() {
     cout<<endl;
     cout<<"-----------------------------"<<endl;
 }
-
+SqList<int> list;
 void Choice(){
     int choice;
     cout<<"ÇëÊäÈë²Ù×÷±àºÅ£º";
@@ -30,7 +30,6 @@ void Choice(){
     cin>>choice;
     system("CLS");
     dispmenu();
-    SqList<int> list;
     switch (choice)
     {
     case 1:
@@ -180,5 +179,4 @@ int main(int argc, char const *argv[])
     {
         Choice();
     }
-    return 0;
 }
