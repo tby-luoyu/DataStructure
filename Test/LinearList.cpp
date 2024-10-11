@@ -3,9 +3,9 @@
 using namespace std;
 
 void dispmenu() {
-    cout<<"---------单链表操作菜单---------"<<endl;
+    cout<<"---------顺序表操作菜单---------"<<endl;
     cout<<endl;
-    cout<<"        1.初始化链表           "<<endl;
+    cout<<"        1.初始化顺序表          "<<endl;
     cout<<"        2.创建顺序表           "<<endl;
     cout<<"        3.获取第i个元素     "<<endl;
     cout<<"        4.按值查找元素序位      "<<endl;
